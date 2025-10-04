@@ -64,7 +64,7 @@
 
 ```bash
 # Clone repository
-git clone https://github.com/fahamgeer177/CompatBuddy
+git clone https://github.com/fahamgeer177/CompatBuddy.git
 cd CompatBuddy
 
 # Install extension dependencies
