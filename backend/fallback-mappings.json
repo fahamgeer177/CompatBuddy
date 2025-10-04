@@ -1,0 +1,72 @@
+{
+  "css-container-queries": {
+    "supportPercentage": 72,
+    "status": "limited",
+    "alternative": "Flexbox with media queries",
+    "explanation": "CSS Container Queries have limited support in older browsers. Use flexbox with media queries for broader compatibility.",
+    "fallbackSnippet": "/* Fallback with flexbox and media queries */\n.container {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n@media (min-width: 400px) {\n  .container .item {\n    flex: 1 1 50%;\n  }\n}\n\n@media (min-width: 800px) {\n  .container .item {\n    flex: 1 1 33.333%;\n  }\n}"
+  },
+  "webgpu": {
+    "supportPercentage": 45,
+    "status": "experimental",
+    "alternative": "WebGL 2.0 or Canvas 2D",
+    "explanation": "WebGPU is still experimental. Use WebGL 2.0 for GPU-accelerated graphics or Canvas 2D for simpler cases.",
+    "fallbackSnippet": "// WebGL 2.0 fallback\nconst canvas = document.getElementById('canvas');\nconst gl = canvas.getContext('webgl2') || canvas.getContext('webgl');\n\nif (!gl) {\n  console.warn('WebGL not supported, falling back to 2D canvas');\n  const ctx = canvas.getContext('2d');\n  // Implement 2D fallback\n}"
+  },
+  "resizeobserver": {
+    "supportPercentage": 89,
+    "status": "stable",
+    "alternative": "Window resize events with element measurement",
+    "explanation": "ResizeObserver has good support but consider a polyfill for older browsers.",
+    "fallbackSnippet": "// ResizeObserver with fallback\nif ('ResizeObserver' in window) {\n  const observer = new ResizeObserver(entries => {\n    // Handle resize\n  });\n  observer.observe(element);\n} else {\n  // Fallback using window resize\n  let resizeTimeout;\n  window.addEventListener('resize', () => {\n    clearTimeout(resizeTimeout);\n    resizeTimeout = setTimeout(() => {\n      // Check element dimensions\n      const rect = element.getBoundingClientRect();\n      // Handle resize\n    }, 100);\n  });\n}"
+  },
+  "intersectionobserver": {
+    "supportPercentage": 92,
+    "status": "stable",
+    "alternative": "Scroll event listeners with getBoundingClientRect",
+    "explanation": "IntersectionObserver has excellent support but use a polyfill for IE11.",
+    "fallbackSnippet": "// IntersectionObserver with fallback\nif ('IntersectionObserver' in window) {\n  const observer = new IntersectionObserver((entries) => {\n    entries.forEach(entry => {\n      if (entry.isIntersecting) {\n        // Element is visible\n      }\n    });\n  });\n  observer.observe(element);\n} else {\n  // Fallback using scroll events\n  function checkVisibility() {\n    const rect = element.getBoundingClientRect();\n    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;\n    if (isVisible) {\n      // Element is visible\n    }\n  }\n  window.addEventListener('scroll', checkVisibility);\n  checkVisibility();\n}"
+  },
+  "css-has-selector": {
+    "supportPercentage": 68,
+    "status": "limited",
+    "alternative": "JavaScript-based class toggling",
+    "explanation": "CSS :has() selector has limited support. Use JavaScript to add conditional classes.",
+    "fallbackSnippet": "/* CSS */\n.container.has-active .item {\n  /* styles when container has active child */\n}\n\n/* JavaScript fallback */\nfunction updateHasClass() {\n  const container = document.querySelector('.container');\n  const hasActive = container.querySelector('.active');\n  container.classList.toggle('has-active', !!hasActive);\n}\n\n// Watch for changes\nconst observer = new MutationObserver(updateHasClass);\nobserver.observe(container, { childList: true, subtree: true });"
+  },
+  "css-cascade-layers": {
+    "supportPercentage": 78,
+    "status": "stable",
+    "alternative": "BEM methodology with specific selectors",
+    "explanation": "CSS Cascade Layers are well-supported in modern browsers. Use BEM or specific selectors for older browsers.",
+    "fallbackSnippet": "/* Modern: CSS Layers */\n@layer base, components, utilities;\n\n@layer base {\n  button { background: gray; }\n}\n\n/* Fallback: BEM with specificity */\n.btn {\n  background: gray;\n}\n\n.btn--primary {\n  background: blue;\n}\n\n.btn--primary.btn--large {\n  font-size: 1.2em;\n}"
+  },
+  "css-subgrid": {
+    "supportPercentage": 45,
+    "status": "limited",
+    "alternative": "CSS Grid with explicit grid definitions",
+    "explanation": "CSS Subgrid has limited support. Use explicit grid definitions or flexbox for similar layouts.",
+    "fallbackSnippet": "/* Modern: Subgrid */\n.parent {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n}\n\n.child {\n  display: grid;\n  grid-template-columns: subgrid;\n}\n\n/* Fallback: Explicit grid */\n.parent {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n}\n\n.child {\n  display: contents; /* or use flexbox */\n}"
+  },
+  "web-share-api": {
+    "supportPercentage": 65,
+    "status": "limited",
+    "alternative": "Manual sharing with URLs and clipboard",
+    "explanation": "Web Share API is mainly supported on mobile. Provide manual sharing options for desktop.",
+    "fallbackSnippet": "// Web Share API with fallback\nif (navigator.share) {\n  navigator.share({\n    title: 'Page Title',\n    text: 'Check this out!',\n    url: window.location.href\n  });\n} else {\n  // Fallback: Copy to clipboard\n  navigator.clipboard.writeText(window.location.href).then(() => {\n    alert('Link copied to clipboard!');\n  }).catch(() => {\n    // Manual fallback\n    const input = document.createElement('input');\n    input.value = window.location.href;\n    document.body.appendChild(input);\n    input.select();\n    document.execCommand('copy');\n    document.body.removeChild(input);\n    alert('Link copied!');\n  });\n}"
+  },
+  "css-logical-properties": {
+    "supportPercentage": 85,
+    "status": "stable",
+    "alternative": "Physical properties with direction classes",
+    "explanation": "CSS Logical Properties have good support. Use physical properties with direction-aware classes for fallback.",
+    "fallbackSnippet": "/* Modern: Logical properties */\n.element {\n  margin-inline-start: 1rem;\n  padding-block: 0.5rem;\n}\n\n/* Fallback: Physical properties */\n.element {\n  margin-left: 1rem;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n\n/* RTL support */\n[dir=\"rtl\"] .element {\n  margin-left: 0;\n  margin-right: 1rem;\n}"
+  },
+  "css-color-function": {
+    "supportPercentage": 70,
+    "status": "stable",
+    "alternative": "HSL or RGB with CSS custom properties",
+    "explanation": "CSS color() function has growing support. Use HSL/RGB with custom properties for wider compatibility.",
+    "fallbackSnippet": "/* Modern: color() function */\n:root {\n  --primary: color(display-p3 0.8 0.2 0.3);\n}\n\n/* Fallback: HSL with custom properties */\n:root {\n  --primary-h: 340;\n  --primary-s: 75%;\n  --primary-l: 50%;\n  --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));\n}\n\n.element {\n  background: var(--primary);\n  background: color(display-p3 0.8 0.2 0.3); /* Progressive enhancement */\n}"
+  }
+}

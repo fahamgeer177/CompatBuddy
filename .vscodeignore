@@ -1,0 +1,37 @@
+# VS Code configuration
+.vscode/**
+.vscode-test/**
+
+# Source and build files (keep dist/)
+out/**
+src/**
+node_modules/**
+backend/node_modules/**
+
+# Development files
+.gitignore
+.yarnrc
+webpack.config.js
+**/tsconfig.json
+**/eslint.config.mjs
+**/*.map
+**/*.ts
+**/.vscode-test.*
+
+# Keep essential documentation
+!README.md
+!CHANGELOG.md
+!LICENSE
+
+# Keep backend essentials
+!backend/package.json
+!backend/server.js
+!backend/fallback-mappings.json
+
+# Keep demo files
+!demo/**
+
+# Logs and temporary files
+*.log
+**/*.tmp
+**/*.temp

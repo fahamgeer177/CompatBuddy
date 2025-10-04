@@ -1,0 +1,62 @@
+/* Demo CSS file with risky modern features */
+
+/* CSS Container Queries - Limited support */
+@container sidebar (min-width: 400px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* CSS :has() selector - Limited support */
+.article:has(> .highlight) {
+  border: 2px solid gold;
+}
+
+.form:has(input:invalid) {
+  border: 1px solid red;
+}
+
+/* CSS Cascade Layers - Good support but newer feature */
+@layer base, components, utilities;
+
+@layer base {
+  button {
+    background: var(--button-bg, gray);
+    border: none;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background: color(display-p3 0.2 0.5 0.8);
+    color: white;
+  }
+}
+
+/* CSS Subgrid - Very limited support */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.grid-item {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 3;
+}
+
+/* CSS Logical Properties - Good support */
+.content {
+  margin-inline-start: 2rem;
+  padding-block: 1rem;
+  border-inline: 1px solid #ccc;
+}
+
+/* CSS color() function - Growing support */
+.modern-colors {
+  background: color(display-p3 0.8 0.2 0.3);
+  border-color: color(rec2020 0.1 0.9 0.4);
+}

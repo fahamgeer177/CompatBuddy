@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompatBuddy Demo</title>
+    <link rel="stylesheet" href="risky-features.css">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .highlight {
+            background: yellow;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            z-index: 1000;
+        }
+        
+        .responsive-component {
+            border: 2px dashed #ccc;
+            padding: 1rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .responsive-component.compact {
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .lazy-load {
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .lazy-load.loaded {
+            background: #d4edda;
+        }
+        
+        button {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        button:hover {
+            background: #005999;
+        }
+        
+        #graphics-canvas {
+            border: 1px solid #ccc;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔍 CompatBuddy Demo</h1>
+        <p>This page demonstrates modern web features that CompatBuddy can detect and suggest fallbacks for.</p>
+    </header>
+
+    <main>
+        <section class="demo-section">
+            <h2>CSS Container Queries</h2>
+            <p>This section uses <span class="highlight">@container</span> queries which have limited browser support.</p>
+            <div class="container sidebar">
+                <div class="card">
+                    <h3>Card Title</h3>
+                    <p>This card layout adapts based on its container size, not the viewport.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>CSS :has() Selector</h2>
+            <article class="article">
+                <h3>Article with Conditional Styling</h3>
+                <p>This article uses <span class="highlight">:has()</span> selector for conditional styling.</p>
+                <div class="highlight">Highlighted content affects parent styling</div>
+            </article>
+        </section>
+
+        <section class="demo-section">
+            <h2>Modern JavaScript APIs</h2>
+            <div class="responsive-component">
+                <h3>ResizeObserver Demo</h3>
+                <p>This component uses ResizeObserver to adapt its layout. Resize the window to see it change.</p>
+            </div>
+            
+            <div class="lazy-load" data-src="placeholder">
+                <p>IntersectionObserver: This content loads when visible</p>
+            </div>
+            
+            <button id="share-btn">🔗 Share with Web Share API</button>
+            
+            <h3>WebGPU Graphics</h3>
+            <canvas id="graphics-canvas" width="400" height="200"></canvas>
+            <p>This canvas attempts to use WebGPU, falling back to WebGL or 2D canvas.</p>
+        </section>
+
+        <section class="demo-section">
+            <h2>CSS Cascade Layers</h2>
+            <p>This page uses <span class="highlight">@layer</span> for CSS organization.</p>
+            <button class="btn-primary">Styled with CSS Layers</button>
+        </section>
+
+        <section class="demo-section">
+            <h2>CSS Logical Properties</h2>
+            <div class="content">
+                <p>This content uses <span class="highlight">logical properties</span> like margin-inline-start for internationalization support.</p>
+            </div>
+        </section>
+
+        <section class="demo-section modern-colors">
+            <h2>CSS color() Function</h2>
+            <p>This section uses the modern <span class="highlight">color()</span> function for wide-gamut colors.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Open this file in VS Code with CompatBuddy extension to see compatibility warnings and suggestions!</p>
+    </footer>
+
+    <script src="modern-apis.js"></script>
+</body>
+</html>
