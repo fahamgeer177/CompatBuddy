@@ -3,15 +3,16 @@
   "displayName": "CompatBuddy",
   "description": "AI-powered VS Code extension that flags risky web features and suggests safer alternatives using Baseline data",
   "version": "0.0.1",
-  "publisher": "your-publisher-name",
+  "publisher": "fahamgeer-mahesar",
+  "icon": "CompatBuddy.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/compatbuddy.git"
+    "url": "https://github.com/fahamgeer177/CompatBuddy.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/compatbuddy/issues"
+    "url": "https://github.com/fahamgeer177/CompatBuddy/issues"
   },
-  "homepage": "https://github.com/your-username/compatbuddy#readme",
+  "homepage": "https://github.com/fahamgeer177/CompatBuddy#readme",
   "license": "MIT",
   "keywords": ["web", "compatibility", "css", "javascript", "browser-support", "fallback", "polyfill"],
   "engines": {
