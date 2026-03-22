@@ -15,6 +15,8 @@
 2. Start backend: `cd backend && npm install && npm start`
 3. Open demo files in `./demo/` to see CompatBuddy in action!
 
+https://github.com/user-attachments/assets/12adc7c4-92a4-4a04-8771-034744ac82e5
+
 ## 🚀 Features
 
 - **🔍 Real-time Detection**: Automatically scans `.js`, `.ts`, `.css`, `.html` files for modern web features
